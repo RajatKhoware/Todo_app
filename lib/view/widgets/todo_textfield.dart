@@ -1,3 +1,11 @@
+// This is a Flutter code for a text field used in a to-do app.
+// The code imports necessary packages and controllers for the app.
+// It creates a stateless widget called TodoTextField that displays a text field for users to input tasks.
+// The text field is styled using Google Fonts and decorated with borders and padding.
+// It also includes a hint text and an onSubmitted function to add tasks.
+// The widget is wrapped in a container with specific width and decoration.
+// The TodoTextField is used within the app to allow users to write their next task.
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -8,9 +16,11 @@ class TodoTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final height = MediaQuery.of(context).size.height;
-    final width = MediaQuery.of(context).size.width;
+    final mediaQuery = MediaQuery.of(context);
+    final double height = mediaQuery.size.height;
+    final double width = mediaQuery.size.width;
     final notifier = context.watch<TodoNotifier>();
+
     return Container(
       width: width * 0.7,
       decoration: BoxDecoration(

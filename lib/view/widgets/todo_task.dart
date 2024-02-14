@@ -4,7 +4,6 @@ import 'package:provider/provider.dart';
 import 'package:to_do_app/controllers/notifiers/todo_provider.dart';
 import 'package:to_do_app/res/mytext.dart';
 
-
 class Task extends StatelessWidget {
   final int index;
 
@@ -12,8 +11,9 @@ class Task extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final height = MediaQuery.sizeOf(context).height;
-    final width = MediaQuery.sizeOf(context).width;
+    final mediaQuery = MediaQuery.of(context);
+    final double height = mediaQuery.size.height;
+    final double width = mediaQuery.size.width;
     final notifier = context.watch<TodoNotifier>();
     final task = notifier.tasksList[index];
 
@@ -23,7 +23,7 @@ class Task extends StatelessWidget {
       ),
       padding: EdgeInsets.symmetric(
         vertical: height * 0.015,
-        horizontal: width * 0.05,
+        horizontal: width * 0.02,
       ),
       width: width,
       decoration: BoxDecoration(
@@ -33,6 +33,7 @@ class Task extends StatelessWidget {
       ),
       child: Row(
         children: [
+          SizedBox(width: width * 0.02),
           InkWell(
             onTap: () => notifier.markAsComplete(index),
             child: Container(
@@ -49,7 +50,7 @@ class Task extends StatelessWidget {
           ),
           SizedBox(width: width * 0.02),
           SizedBox(
-            width: width * 0.6,
+            width: width * 0.7,
             child: MyTextPoppines(
               text: task.title,
               fontSize: width * 0.06,
@@ -58,7 +59,7 @@ class Task extends StatelessWidget {
               textdecoration: task.isCompleted,
             ),
           ),
-          SizedBox(width: width * 0.05),
+          SizedBox(width: width * 0.02),
           InkWell(
             onTap: () => notifier.deleteTask(index),
             child: Icon(

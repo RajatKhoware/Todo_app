@@ -7,8 +7,9 @@ class Header extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final height = MediaQuery.of(context).size.height;
-    final width = MediaQuery.of(context).size.width;
+     final mediaQuery = MediaQuery.of(context);
+    final double height = mediaQuery.size.height;
+    final double width = mediaQuery.size.width;
     final notifier = context.watch<TodoNotifier>();
     final task = notifier.tasksList;
     final completedTask = task.where((task) => task.isCompleted).length;
